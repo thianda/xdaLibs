@@ -6,15 +6,13 @@ from setuptools import setup, find_packages
 import sys
 setup(
     name="xdaLibs",
-    version="0.0.1",
+    version="0.0.3",
     author="xda",
     author_email="thianda91@outlook.com",
-    description="A helping-tool library for self-use",
+    description="A helping-tool library for personal",
     license="MIT",
     url="https://github.com/thianda/xdaLibs",
-    packages=[
-        'iniConfig'
-    ],
+    packages=find_packages(exclude=['tests*']),
     classifiers=[
         "Environment :: Web Environment",
         'Development Status :: 4 - Beta',
