@@ -4,9 +4,11 @@
 from __future__ import print_function
 from setuptools import setup, find_packages
 import sys
+import xdaLibs
+
 setup(
     name="xdaLibs",
-    version="0.0.3",
+    version=xdaLibs.__version__,
     author="xda",
     author_email="thianda91@outlook.com",
     description="A helping-tool library for personal",

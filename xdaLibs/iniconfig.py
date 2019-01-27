@@ -10,9 +10,9 @@ class IniConfig(object):
     ini配置文件
     """
     def __init__(self, file):
-        if not os.path.exists(file):
-            print('File `' + file+'` doesn\'t exist! Terminating...')
-            exit()
+        #if not os.path.exists(file):
+        #    print('File `' + file+'` doesn\'t exist! Terminating...')
+        #    exit()
         self.file = file
         self.config = configparser.ConfigParser()
         self.config.read(file)
