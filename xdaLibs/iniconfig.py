@@ -10,20 +10,17 @@ class IniConfig(object):
     ini配置文件
     """
 
-    def __init__(self, fileName, encoding='utf-8'):
-        # if not os.path.exists(file):
-        #    print('File `' + fileName+'` doesn\'t exist! Terminating...')
-        #    exit()
-        self.file = fileName
+    def __init__(self, file_name, encoding='utf-8'):
+        self.file = file_name
         self.config = configparser.ConfigParser()
-        self.config.read(fileName, encoding)
+        self.config.read(file_name, encoding)
 
-    def get(self, section, option):
+    def get(self, section, option, default=''):
         """
         获取值
         """
         self.checkOption(section, option)
-        value = self.config.get(section, option)
+        value = self.config.get(section, option, fallback=default)
         return value
 
     def listOptions(self, section):
@@ -47,5 +44,5 @@ class IniConfig(object):
         """
         self.checkSection(section)
         if option not in self.config[section]:
-            print('There\'s no option named ' + option +
+            print('Error: There\'s no option named ' + option +
                   ' for ' + section + ' in file: ' + self.file)
