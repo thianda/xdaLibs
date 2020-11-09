@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from configparser import SectionProxy
 import os
 import configparser
 
@@ -14,6 +15,16 @@ class IniConfig(object):
         self.file = file_name
         self.config = configparser.ConfigParser()
         self.config.read(file_name, encoding)
+
+    def set(self, section, option, value=''):
+        """
+        设置值（自动保存）
+        """
+        if not section in self.config:
+            self.config.add_section(section)
+        self.config.set(section, option, value)
+        with open(self.file, 'w', encoding='utf-8') as f:
+            self.config.write(f)
 
     def get(self, section, option, default=''):
         """
